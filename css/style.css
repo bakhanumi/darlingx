@@ -1,0 +1,1116 @@
+/* 
+ * style.css
+ * Comprehensive styles for premium website
+ */
+
+/* ===== VARIABLES ===== */
+:root {
+    /* Premium Gold Color Scheme */
+    --primary-color: #FFD700;
+    --primary-color-dark: #D4AF37;
+    --primary-color-light: #FFDF80;
+    --secondary-color: #996515;
+    --bg-color: #000;
+    --bg-color-light: #111;
+    --text-color: #fff;
+    --text-color-muted: rgba(255, 255, 255, 0.7);
+    --accent-color: #E6C200;
+    --hover-color: #FFC107;
+    
+    /* UI Elements */
+    --border-color: #1a1a1a;
+    --border-active: rgba(255, 215, 0, 0.5);
+    --shadow-color: rgba(255, 215, 0, 0.2);
+    --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.3);
+    --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --link-hover-bg: rgba(255, 215, 0, 0.1);
+    --card-bg: rgba(10, 10, 10, 0.6);
+    
+    /* Typography */
+    --font-main: 'VT323', monospace;
+    --font-secondary: 'VT323', monospace;
+    --font-size-base: 18.15px;
+    --font-size-sm: 1.35rem;
+    --font-size-md: 1.49rem;
+    --font-size-lg: 1.63rem;
+    --font-size-xl: 1.77rem;
+    --font-size-2xl: 2.15rem;
+    --font-size-3xl: 2.43rem;
+    --font-size-4xl: 2.85rem;
+    --line-height-tight: 1.1;
+    --line-height-normal: 1.4;
+    --line-height-loose: 1.6;
+    
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-8: 3rem;
+    --space-10: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Animation */
+    --animation-speed-slow: 5s;
+    --animation-speed-normal: 3s;
+    --animation-speed-fast: 1s;
+    
+    /* Z-indices */
+    --z-background: -10;
+    --z-normal: 1;
+    --z-dropdown: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+    --z-tooltip: 9999;
+}
+
+/* ===== BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all var(--transition-normal);
+    font-family: var(--font-main) !important;
+    letter-spacing: 0.5px;
+}
+
+html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: var(--line-height-normal);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    transform: scale(0.95);
+    transform-origin: top center;
+    width: calc(100% / 0.95);
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    animation: fadeIn 0.8s ease-out;
+    background-image: 
+        radial-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+        radial-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    cursor: default;
+    transition: opacity 0.3s ease-out;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--bg-color-light);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color-dark);
+    border-radius: var(--radius-full);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.9) 100%);
+    pointer-events: none;
+    z-index: var(--z-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-tight);
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: var(--space-4);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== LAYOUT STYLES ===== */
+.container {
+    max-width: calc(1000px / 0.95);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-5);
+    position: relative;
+    transform-origin: top center;
+}
+
+/* Main sections */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 0.1rem;
+    padding: 0.5rem;
+    background: transparent;
+    border-radius: var(--radius-md);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.about {
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 0.1rem;
+    background: transparent;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+    will-change: contents;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    align-items: flex-start;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: flex-start;
+}
+
+.about-text p {
+    text-align: left;
+    max-width: 100%;
+    margin-bottom: var(--space-2);
+    line-height: var(--line-height-loose);
+    font-size: var(--font-size-lg);
+    color: var(--primary-color); /* Желтый цвет */
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s; /* Задержка после появления анимированных элементов */
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Убираем анимацию для текста в about-text */
+.about-text .animate_letters {
+    color: inherit;
+    will-change: auto;
+    transform: none;
+    transition: none;
+}
+
+/* Social links section */
+.socials {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0.1rem 0;
+    padding: 0.5rem;
+    background: transparent;
+    border-radius: var(--radius-md);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Footer */
+.attribution {
+    text-align: center;
+    margin-top: var(--space-8);
+    font-size: var(--font-size-sm);
+    color: var(--text-color-muted);
+    opacity: 0.7;
+}
+
+/* ===== COMPONENT STYLES ===== */
+/* Navigation links */
+.navbar a {
+    position: relative;
+    margin-right: var(--space-4);
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    color: var(--primary-color);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    font-weight: 400;
+    letter-spacing: 1px;
+    overflow: hidden;
+    z-index: var(--z-normal);
+    animation: slideInLeft 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.navbar a:nth-child(1) { animation-delay: 0.1s; }
+.navbar a:nth-child(2) { animation-delay: 0.2s; }
+.navbar a:nth-child(3) { animation-delay: 0.3s; }
+.navbar a:nth-child(4) { animation-delay: 0.4s; }
+.navbar a:nth-child(5) { animation-delay: 0.5s; }
+.navbar a:nth-child(6) { animation-delay: 0.6s; }
+
+.navbar a:hover {
+    background-color: var(--link-hover-bg);
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+.navbar a::after {
+    display: none;
+}
+
+/* About section components */
+.about-name {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--space-4);
+}
+
+.about-name .animate_letters {
+    display: inline-block;
+    font-size: var(--font-size-4xl);
+    color: var(--primary-color);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    min-width: 200px; /* Предотвращаем схлопывание при анимации */
+}
+
+.about-email {
+    display: block;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.about-email:hover {
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.about-location {
+    margin-bottom: var(--space-4);
+    margin-top: var(--space-2);
+    font-size: var(--font-size-lg);
+    font-weight: normal;
+    animation: none;
+    opacity: 1;
+}
+
+.about-location a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.location-emoji {
+    font-size: 1.2em;
+    display: inline-block;
+}
+
+.about-location a .animate_letters {
+    color: #B8860B !important; /* DarkGoldenrod */
+    text-shadow: 
+        0 0 8px rgba(184, 134, 11, 0.3),
+        0 0 12px rgba(184, 134, 11, 0.2);
+    font-weight: 500;
+}
+
+.about-image {
+    width: 410px;
+    height: auto;
+    margin-right: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+    transform: scale(1.02);
+}
+
+/* Social links */
+.socials a {
+    position: relative;
+    margin-right: var(--space-4);
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    color: var(--primary-color);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    font-weight: 400;
+    letter-spacing: 1px;
+    overflow: hidden;
+    z-index: var(--z-normal);
+    animation: slideInLeft 0.5s ease-out forwards;
+    opacity: 0;
+    background: transparent;
+    border: none;
+}
+
+.socials a:nth-child(1) { animation-delay: 0.1s; }
+.socials a:nth-child(2) { animation-delay: 0.2s; }
+.socials a:nth-child(3) { animation-delay: 0.3s; }
+.socials a:nth-child(4) { animation-delay: 0.4s; }
+
+.socials a:hover {
+    background-color: var(--link-hover-bg);
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+/* Attribution */
+.attribution {
+    animation: none;
+    opacity: 1;
+}
+
+.attribution a {
+    color: var(--primary-color);
+    transition: color var(--transition-fast);
+}
+
+.attribution a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Animation element containers */
+.animate_letters {
+    position: relative;
+    display: inline-block;
+    will-change: contents;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: color 0.3s ease;
+}
+
+.about-name .animate_letters,
+.animate_letters.location-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Cursor elements */
+.custom-cursor,
+.cursor-dot {
+    display: none;
+}
+
+/* Scanline effect */
+.scanline {
+    display: none;
+}
+
+/* Matrix background */
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-background);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.matrix-line {
+    position: absolute;
+    top: 0;
+    font-family: var(--font-main);
+    font-size: 16px;
+    color: rgba(0, 255, 0, 0.7);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.matrix-char {
+    margin-top: 5px;
+    animation: matrixFlicker 0.2s infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+/* Border flow animation */
+@keyframes border-flow {
+    0% { background-position: -300px 0; }
+    100% { background-position: 300px 0; }
+}
+
+/* Matrix drop animation */
+@keyframes matrixDrop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Character flicker animation */
+@keyframes matrixFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* Pulse animation for highlights */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Glow animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+    }
+}
+
+/* Glitch effect */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Glitch effect class */
+.glitch-effect {
+    animation: glitch 0.2s forwards;
+}
+
+.glitch-effect .scanline {
+    opacity: 0.9;
+    height: 10px;
+    background: rgba(255, 215, 0, 0.3);
+}
+
+.glitch-effect img, 
+.glitch-effect .animate_letters {
+    animation: glitch 0.1s infinite;
+}
+
+/* Typing cursor animation */
+@keyframes typing-cursor {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Fade out animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Float animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Обновляем анимации */
+@keyframes slideInDecrypt {
+    0% {
+        transform: translateX(-10px);
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes slideInImage {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Убираем анимацию для навигационной панели */
+.navbar .animate_letters {
+    opacity: 1;
+    animation: none;
+    transform: none;
+}
+
+/* Обновляем стили для анимации только для контента */
+.about-name .animate_letters,
+.about-location .animate_letters {
+    display: inline-block;
+    opacity: 0;
+    animation: slideInDecrypt 0.4s ease-out forwards;
+}
+
+/* Анимация для изображения */
+.about-image {
+    opacity: 0;
+    animation: slideInImage 0.5s ease-out forwards;
+}
+
+/* Стили для обычного текста */
+.about-text p {
+    opacity: 0;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Последовательное появление параграфов */
+.about-text p:nth-child(1) { animation-delay: 0.2s; }
+.about-text p:nth-child(2) { animation-delay: 0.25s; }
+.about-text p:nth-child(3) { animation-delay: 0.3s; }
+.about-text p:nth-child(4) { animation-delay: 0.35s; }
+.about-text p:nth-child(5) { animation-delay: 0.4s; }
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+    body {
+        transform: scale(0.98);
+        width: calc(100% / 0.98);
+    }
+    
+    .container {
+        max-width: calc(100% / 0.98);
+        padding: var(--space-4) var(--space-3);
+    }
+    
+    .constellation-container,
+    #matrix-bg,
+    .custom-cursor,
+    .cursor-dot {
+        transform: scale(0.98);
+        width: calc(100% / 0.98);
+        left: calc((100% - 100% / 0.98) / 2);
+    }
+
+    .about {
+        padding: 1.5rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .navbar a {
+        margin: 0.25rem;
+        font-size: 0.95rem;
+    }
+    
+    .about-name {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .socials {
+        justify-content: center;
+        padding: var(--space-3);
+    }
+    
+    .socials a {
+        margin: 0.25rem;
+        font-size: 0.95rem;
+        width: auto;
+    }
+
+    :root {
+        --font-size-base: 16px;
+        --font-size-4xl: 2.5rem;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    body {
+        transform: scale(1);
+        width: 100%;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    .constellation-container,
+    #matrix-bg,
+    .custom-cursor,
+    .cursor-dot {
+        transform: none;
+        width: 100%;
+        left: 0;
+    }
+    
+    :root {
+        --font-size-base: 14px;
+    }
+    
+    .navbar a {
+        padding: var(--space-2) var(--space-3);
+        margin-right: var(--space-2);
+        font-size: var(--font-size-md);
+    }
+    
+    .about-name {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .about-text p {
+        font-size: var(--font-size-md);
+    }
+}
+
+/* Hide cursor when custom cursor is enabled */
+html.custom-cursor-enabled {
+    cursor: default !important;
+}
+
+html.custom-cursor-enabled a,
+html.custom-cursor-enabled button,
+html.custom-cursor-enabled input,
+html.custom-cursor-enabled [role="button"] {
+    cursor: pointer !important;
+}
+
+/* Loading screen */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: var(--z-modal);
+    transition: opacity 0.5s ease;
+}
+
+.loading-text {
+    font-size: var(--font-size-2xl);
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-text::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: 2px;
+    height: 80%;
+    width: 10px;
+    background-color: var(--primary-color);
+    animation: typing-cursor 0.8s infinite;
+}
+
+/* Optimization for when scrolling */
+.is-scrolling .matrix-line {
+    animation-play-state: paused;
+}
+/* 
+ * Add these optimizations to your existing style.css
+ * to ensure proper integration with constellation animation
+ */
+
+/* Add matrix-constellation coordination */
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3; /* Slightly higher than constellation background (-5) */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.matrix-line {
+    position: absolute;
+    top: 0;
+    font-family: var(--font-main);
+    font-size: 12px;
+    color: rgba(0, 255, 0, 0.7);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: -2; /* Above matrix bg but below content */
+}
+
+/* Optimization for when scrolling - expand existing rule */
+.is-scrolling .matrix-line,
+.is-scrolling .star, 
+.is-scrolling .constellation-line {
+    animation-play-state: paused !important;
+    transition: none !important;
+}
+
+/* For low-powered devices */
+@media (max-width: 600px), (prefers-reduced-motion: reduce) {
+    #matrix-bg {
+        opacity: 0.7; /* Reduce matrix intensity */
+    }
+    
+    .matrix-line {
+        font-size: 10px; /* Smaller text */
+    }
+}
+
+/* Refine touch devices interaction */
+@media (hover: none) and (pointer: coarse) {
+    .constellation-container {
+        display: block !important; /* Force display on touch devices */
+    }
+    
+    .star.size-small {
+        width: 3px !important; /* Larger stars for touch */
+        height: 3px !important;
+    }
+    
+    .star.size-medium {
+        width: 4px !important;
+        height: 4px !important;
+    }
+    
+    .star.size-large {
+        width: 5px !important;
+        height: 5px !important;
+    }
+}
+
+/* Удаляем стили для скобок */
+.about-name .animate_letters::before,
+.about-name .animate_letters::after {
+    display: none; /* или можно полностью удалить эти правила */
+}
+
+/* Обновляем стили для имени без скобок */
+.about-name .animate_letters {
+    font-size: calc(var(--font-size-2xl) * 1.3);
+    font-family: var(--font-main);
+    font-weight: 400;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+    padding: 0; /* Убираем padding, который был нужен для скобок */
+    cursor: pointer;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    .about-name .animate_letters {
+        font-size: calc(var(--font-size-2xl) * 1.3);
+        letter-spacing: -0.5px;
+    }
+}
+
+/* Обеспечиваем правильное отображение анимаций */
+@supports (transform-style: preserve-3d) {
+    body {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+}
+
+/* Обновляем переменные шрифтов */
+:root {
+    /* Обновляем основной шрифт на Monocraft */
+    --font-main: 'VT323', monospace;
+    
+    /* Остальные переменные остаются без изменений... */
+}
+
+/* Обновляем базовые стили для использования Monocraft */
+body {
+    font-family: var(--font-main);
+    /* ... остальные стили body ... */
+}
+
+/* Обновляем стили для матричной анимации */
+.matrix-line {
+    font-family: var(--font-main);
+    /* ... остальные стили ... */
+}
+
+/* Обновляем стили для анимированных букв */
+.animate_letters {
+    font-family: var(--font-main);
+    /* ... остальные стили ... */
+}
+
+/* Обновляем стили навигации */
+.nav-link {
+    font-family: var(--font-main);
+    /* ... остальные стили ... */
+}
+
+/* Обновляем стили для имени */
+.about-name .animate_letters {
+    font-size: calc(var(--font-size-2xl) * 1.3);
+    font-family: var(--font-main);
+    font-weight: 400;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+    padding: 0; /* Убираем padding, который был нужен для скобок */
+    cursor: pointer;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Обновляем стили для социальных ссылок, чтобы они соответствовали navbar */
+.socials {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0.1rem 0;
+    padding: 0.5rem;
+    background: transparent;
+    border-radius: var(--radius-md);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Обновляем стили ссылок в socials, чтобы они соответствовали navbar */
+.socials a {
+    position: relative;
+    margin-right: var(--space-4);
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    color: var(--primary-color);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    font-weight: 400;
+    letter-spacing: 1px;
+    overflow: hidden;
+    z-index: var(--z-normal);
+    animation: slideInLeft 0.5s ease-out forwards;
+    opacity: 0;
+    background: transparent;
+    border: none;
+}
+
+/* Анимация для социальных ссылок */
+.socials a:nth-child(1) { animation-delay: 0.1s; }
+.socials a:nth-child(2) { animation-delay: 0.2s; }
+.socials a:nth-child(3) { animation-delay: 0.3s; }
+.socials a:nth-child(4) { animation-delay: 0.4s; }
+
+/* Эффект при наведении для социальных ссылок */
+.socials a:hover {
+    background-color: var(--link-hover-bg);
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+/* Обновляем цвета текста */
+.about-name .animate_letters,
+.about-email .animate_letters,
+.about-text p .animate_letters,
+.navbar a .animate_letters,
+.socials a .animate_letters,
+.attribution .animate_letters {
+    color: var(--primary-color);
+}
+
+/* При наведении усиливаем свечение */
+.about-name .animate_letters:hover {
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+/* Добавляем желтый цвет для выделения текста */
+::selection {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+/* Единый стиль для location-text, который будет иметь наивысший приоритет */
+.animate_letters.location-text,
+.animate_letters.location-text:hover,
+.animate_letters.location-text[data-animation-complete="true"],
+.animate_letters.location-text[data-animation-complete="false"],
+.about-location a:hover .animate_letters.location-text,
+.about-location a .animate_letters.location-text {
+    color: #B8860B !important;
+    text-shadow: 
+        0 0 8px rgba(184, 134, 11, 0.3),
+        0 0 12px rgba(184, 134, 11, 0.2) !important;
+    font-weight: 500 !important;
+    -webkit-text-fill-color: #B8860B !important;
+}
+
+/* Используем GPU-ускорение для анимаций */
+.animate_letters,
+.matrix-line,
+.star {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Группируем медиа-запросы */
+@media (max-width: 768px) {
+    .about-name .animate_letters {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .about-image {
+        width: 250px;
+    }
+    
+    /* Другие мобильные стили */
+}
+
+/* Состояние загрузки */
+body[data-loading="true"] {
+    opacity: 0.8;
+}
+
+/* Добавляем стили для анимации появления */
+.about {
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.about[data-loading="true"] {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* Оптимизация производительности анимаций */
+.animate_letters {
+    will-change: contents;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Оптимизация производительности */
+.about-name,
+.location-text {
+    will-change: contents;
+    transform: translateZ(0);
+}

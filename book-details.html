@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book Details - Suleymanov Bobur">
+    <meta property="og:title" content="Book Details">
+    <meta property="og:description" content="Book Details - Suleymanov Bobur">
+    <meta property="og:url" content="https://www.darlingx.com/book-details">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon180.png">
+    <title>Book Details | Suleymanov Bobur</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/constellation.css" as="style">
+    <link rel="preload" href="css/book-details.css" as="style">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/constellation.css">
+    <link rel="stylesheet" href="css/book-details.css">
+</head>
+<body>
+    <div class="constellation-container"></div>
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <main>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="nav-link">
+                    <span class="animate_letters">[darlingx.com]</span>
+                </a>
+                <a href="cv.html" class="nav-link">
+                    <span class="animate_letters">[cv]</span>
+                </a>
+                <a href="books.html" class="nav-link">
+                    <span class="animate_letters">[books]</span>
+                </a>
+                <a href="posts.html" class="nav-link">
+                    <span class="animate_letters">[posts]</span>
+                </a>
+                <a href="lists.html" class="nav-link">
+                    <span class="animate_letters">[lists]</span>
+                </a>
+                <a href="projects.html" class="nav-link">
+                    <span class="animate_letters">[projects]</span>
+                </a>
+            </nav>
+            
+            <div class="book-details">
+                <div class="book-header">
+                    <img id="bookCover" class="book-cover" src="" alt="Book cover">
+                    <div class="book-info">
+                        <h1 id="bookTitle" class="book-title"></h1>
+                        <h2 id="bookAuthor" class="book-author"></h2>
+                        <p id="dateRead" class="date-read"></p>
+                    </div>
+                </div>
+                
+                <div class="book-description">
+                    <p id="bookDescription"></p>
+                </div>
+                
+                <div class="book-metadata">
+                    <div class="metadata-item">
+                        <span class="label">Pages:</span>
+                        <span id="pageCount"></span>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="label">Published:</span>
+                        <span id="publishDate"></span>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="label">Genre:</span>
+                        <span id="genre"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/matrix-animation.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/constellation.js"></script>
+    <script src="js/page-transition.js"></script>
+    <script src="js/book-details.js"></script>
+</body>
+</html> 

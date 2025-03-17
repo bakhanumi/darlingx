@@ -1,0 +1,73 @@
+.book-details {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.book-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.book-cover {
+    width: 300px;
+    height: auto;
+    border-radius: var(--radius-sm);
+}
+
+.book-info {
+    flex: 1;
+}
+
+.book-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.book-author {
+    font-size: var(--font-size-lg);
+    color: var(--text-color-muted);
+    margin-bottom: 1rem;
+}
+
+.date-read {
+    font-size: var(--font-size-sm);
+    color: var(--text-color-muted);
+}
+
+.book-description {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.book-metadata {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-color-light);
+    border-radius: var(--radius-sm);
+}
+
+.metadata-item {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.label {
+    color: var(--text-color-muted);
+}
+
+@media (max-width: 768px) {
+    .book-header {
+        flex-direction: column;
+    }
+    
+    .book-cover {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+} 

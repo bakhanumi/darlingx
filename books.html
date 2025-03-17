@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Books - Suleymanov Bobur">
+    <meta property="og:title" content="Books">
+    <meta property="og:description" content="Books - Suleymanov Bobur">
+    <meta property="og:url" content="https://www.darlingx.com/books">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="icon32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon180.png">
+    <title>Bookshelf | Suleymanov Bobur</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    
+    <!-- Предварительная загрузка стилей -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/constellation.css" as="style">
+    <link rel="preload" href="css/books.css" as="style">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/constellation.css">
+    <link rel="stylesheet" href="css/books.css">
+</head>
+<body>
+    <div class="constellation-container"></div>
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <main>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="nav-link">
+                    <span class="animate_letters">[darlingx.com]</span>
+                </a>
+                <a href="cv.html" class="nav-link">
+                    <span class="animate_letters">[cv]</span>
+                </a>
+                <a href="books.html" class="nav-link">
+                    <span class="animate_letters">[books]</span>
+                </a>
+                <a href="posts.html" class="nav-link">
+                    <span class="animate_letters">[posts]</span>
+                </a>
+                <a href="lists.html" class="nav-link">
+                    <span class="animate_letters">[lists]</span>
+                </a>
+                <a href="projects.html" class="nav-link">
+                    <span class="animate_letters">[projects]</span>
+                </a>
+            </nav>
+            
+            <div class="about">
+                <h1 class="about-name"><span class="animate_letters">Bookshelf</span></h1>
+                
+                <div class="books-controls">
+                    <select class="sort-select">
+                        <option value="Date Read">Date Read</option>
+                        <option value="Author (A-Z)">Author (A-Z)</option>
+                        <option value="Title (A-Z)">Title (A-Z)</option>
+                    </select>
+                    <label class="switch" role="switch">
+                        <input type="checkbox" checked id="coverToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="books-grid" id="booksGrid">
+                    <!-- Карточки книг будут добавлены динамически через JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/matrix-animation.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/constellation.js"></script>
+    <script src="js/page-transition.js"></script>
+    <script src="js/books.js"></script>
+    
+</body>
+</html> 

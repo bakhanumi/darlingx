@@ -1,0 +1,79 @@
+# Enable rewriting
+RewriteEngine On
+
+# Установка базового пути, если сайт находится в подпапке
+# RewriteBase /
+
+# Разрешаем прямой доступ к существующим файлам
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Правила для HTML страниц
+RewriteRule ^books/?$ books.html [L]
+RewriteRule ^book-details/?$ book-details.html [L]
+RewriteRule ^posts/?$ posts.html [L]
+RewriteRule ^projects/?$ projects.html [L]
+RewriteRule ^lists/?$ lists.html [L]
+RewriteRule ^cv/?$ cv.html [L]
+
+# Поддержка параметров в URL для book-details
+RewriteCond %{QUERY_STRING} ^id=([^&]+)$
+RewriteRule ^book-details\.html$ book-details.html [L]
+
+# Правильные MIME типы
+AddType text/css .css
+AddType application/javascript .js
+AddType image/webp .webp
+AddType image/svg+xml .svg
+AddType font/ttf .ttf
+AddType font/eot .eot
+AddType font/woff .woff
+AddType font/woff2 .woff2
+
+# Предотвращение кэширования для JS и CSS файлов во время разработки
+<FilesMatch "\.(js|css)$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires 0
+    </IfModule>
+</FilesMatch>
+
+# Включение CORS для шрифтов и других статичных ресурсов
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# Обработка 404 ошибок
+ErrorDocument 404 /404.html
+
+# Базовое сжатие
+<IfModule mod_deflate.c>
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml image/svg+xml
+    </IfModule>
+</IfModule>
+
+# Оптимизация для инструментов разработчика
+<IfModule mod_headers.c>
+    Header set X-UA-Compatible "IE=edge"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Кэширование статичных ресурсов (применить ПОСЛЕ разработки)
+# <IfModule mod_expires.c>
+#     ExpiresActive On
+#     ExpiresByType image/webp "access plus 1 year"
+#     ExpiresByType image/jpg "access plus 1 year"
+#     ExpiresByType image/jpeg "access plus 1 year"
+#     ExpiresByType image/gif "access plus 1 year"
+#     ExpiresByType image/png "access plus 1 year"
+#     ExpiresByType image/svg+xml "access plus 1 month"
+#     ExpiresByType text/css "access plus 1 month"
+#     ExpiresByType text/javascript "access plus 1 month"
+#     ExpiresByType application/javascript "access plus 1 month"
+#     ExpiresByType application/x-javascript "access plus 1 month"
+# </IfModule>
